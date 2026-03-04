@@ -59,3 +59,16 @@ export const deleteBook=async(req,res)=>{
         res.status(400).json({message:"error aa rha hai"});
     }
 }
+
+// genre filter
+export const getBookByGenre=async(req,res)=>{
+try{
+     const {genre}=req.params;
+    const books=await Book.find({genre});
+    res.status(200).json({message:"genre se books mil gyi",data:books});
+}
+catch(error){
+    console.log(error);
+    res.status(500).json({message:"error aa rha hai"});
+}
+}
