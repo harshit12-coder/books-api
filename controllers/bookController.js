@@ -72,3 +72,15 @@ catch(error){
     res.status(500).json({message:"error aa rha hai"});
 }
 }
+// author filter
+export const getBookByAuthor=async(req,res)=>{
+try{
+    const {author}=req.params;
+    const books=await Book.find({author});
+    res.status(200).json({message:"author se books mil gyi",data:books});
+}
+catch(error){
+    console.log(error);
+    res.status(500).json({message:"error aa rha hai"});
+}
+}
